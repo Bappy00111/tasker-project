@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchTask from "./SearchTask";
 import TaskAction from "./TaskAction";
 import TaskLisk from "./TaskLisk";
 
 const TaskBord = () => {
+  const defaultTask = {
+    id: crypto.randomUUID(),
+    title: "Leaarn React Native",
+    description: "i want loren react and web developerment",
+    tags: ["web", "recat", "js"],
+    priority: "High",
+    isFavorite: true,
+  };
+  const [tasks, setTasks] = useState([defaultTask]);
+  //   console.log(tasks)
   return (
     <section className="mb-20" id="tasks">
       <div className="container">
@@ -15,7 +25,7 @@ const TaskBord = () => {
           <TaskAction></TaskAction>
           <div className="overflow-auto">
             {/* task list  */}
-            <TaskLisk></TaskLisk>
+            <TaskLisk tasks={tasks}></TaskLisk>
           </div>
         </div>
       </div>
